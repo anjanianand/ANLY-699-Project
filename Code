@@ -1,0 +1,44 @@
+data2<- data %>%
+group_by(State) %>%
+summarise(avgpctblack = mean(pctBlack, na.rm=TRUE),avgpctwhite = mean(pctWhite, na.rm=TRUE),avgpctAsian = mean(pctAsian, na.rm=TRUE),avgpcthisp = mean(pctHisp, na.rm=TRUE), violentCrime = mean(violentPerPop, na.rm=TRUE), nonViolentCrime = mean(nonViolPerPop, na.rm=TRUE) ) %>%
+as.data.frame()
+
+x<-data2$avgpctblack
+y<-data2$violentCrime
+n<-ggplot(data2, aes(x,y))
+n+geom_point()+geom_smooth(method="lm")+labs(x="Black Percentage", y="Violent Crime Per Pop")+ggtitle("Relationship between Black Ethnicity and Violent Crime")+theme_minimal()
+
+x<-data2$avgpctblack
+y<-data2$nonViolentCrime
+n<-ggplot(data2, aes(x,y))
+n+geom_point()+geom_smooth(method="lm")+labs(x="Black Percentage", y="Non Violent Crime Per Pop")+ggtitle("Relationship between Black Ethnicity and Non Violent Crime")+theme_minimal()
+
+x<-data2$avgpctwhite
+y<-data2$violentCrime
+n<-ggplot(data2, aes(x,y))
+n+geom_point()+geom_smooth(method="lm")+labs(x="White Percentage", y="Violent Crime Per Pop")+ggtitle("Relationship between White Ethnicity and Violent Crime")+theme_minimal()
+
+x<-data2$avgpctwhite
+y<-data2$nonViolentCrime
+n<-ggplot(data2, aes(x,y))
+n+geom_point()+geom_smooth(method="lm")+labs(x="White Percentage", y="Non Violent Crime Per Pop")+ggtitle("Relationship between White Ethnicity and Non Violent Crime")+theme_minimal()
+
+x<-data2$avgpctAsian
+y<-data2$violentCrime
+n<-ggplot(data2, aes(x,y))
+n+geom_point()+geom_smooth(method="lm")+labs(x="Asian Percentage", y="Violent Crime Per Pop")+ggtitle("Relationship between Asian Ethnicity and Violent Crime")+theme_minimal()
+
+x<-data2$avgpctAsian
+y<-data2$nonViolentCrime
+n<-ggplot(data2, aes(x,y))
+n+geom_point()+geom_smooth(method="lm")+labs(x="Asian Percentage", y="Non Violent Crime Per Pop")+ggtitle("Relationship between Asian Ethnicity and Non Violent Crime")+theme_minimal()
+
+x<-data2$avgpcthisp
+y<-data2$violentCrime
+n<-ggplot(data2, aes(x,y))
+n+geom_point()+geom_smooth(method="lm")+labs(x="Hispanic Percentage", y="Violent Crime Per Pop")+ggtitle("Relationship between Hispanic Ethnicity and Violent Crime")+theme_minimal()
+
+x<-data2$avgpcthisp
+y<-data2$nonViolentCrime
+n<-ggplot(data2, aes(x,y))
+n+geom_point()+geom_smooth(method="lm")+labs(x="Hispanic Percentage", y="Non Violent Crime Per Pop")+ggtitle("Relationship between Hispanic Ethnicity and Non Violent Crime")+theme_minimal()
